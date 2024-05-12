@@ -1,9 +1,7 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %} Landing Page {% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %} Landing Page {% endblock %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,128 +21,205 @@
     }
     /* Add additional CSS styles as needed */
 </style>
+
 <body class="body">
-<div class="container">
-    <div class="quadrant" id="q1">
-        <div class="content">
-            <h2 style="text-align: center; color: #800020;">Quotes</h2>
-            <div id="quote" class="quote-content"></div>
-        </div>
-    </div>
-    <div class="quadrant" id="q2">
-        <div class="content">
-            <h2 style="text-align: center; color: #800020;">Our Memories</h2>
-
-            <div id="image" class="image-content"></div>
-        </div>
-    </div>
-
-    <div class="quadrant" id="q3">
-        <div class="content">
-            <h2 style="text-align: center; color: #800020;">Add Wishes</h2>
-            <div id="chatbox" class="chatbox"></div>
-            <form id="postForm">
-                <div>
-                    <label for="title"><h3 style="text-align: center; color: #800020;" >Name:</h3></label>
-                    <input type="text" id="title" name="title" required>
-                </div>
-                <div>
-                    <label for="content" style="text-align: center; color: #800020;"><h3 style="text-align: center; color: #800020;">Message:</h3></label>
-                    <textarea id="content" name="content" required></textarea>
-                </div>
-                <button type="submit" id="submitBtn">Submit</button>
-                <div id="status" style="text-align: center; color: #800020;"></div>
-                <script>
-
-                    document.getElementById("postForm").addEventListener("submit", function(event) {
-        
-                      event.preventDefault();
-        
-                      var formData = new FormData(this);
-        
-                      var xhr = new XMLHttpRequest();
-        
-                      xhr.open("POST", "/wish/");
-        
-                      xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-        
-                      document.getElementById("submitBtn").disabled = true;
-        
-                      document.getElementById("status").innerHTML = "Submitting...";
-        
-                      xhr.onreadystatechange = function() {
-        
-                        if (xhr.readyState === XMLHttpRequest.DONE) {
-        
-                          if (xhr.status === 200) {
-        
-                            document.getElementById("status").innerHTML = "Wishes saved successfully!";
-
-                            document.getElementById("title").value = ""; // Clear title field
-        
-                            document.getElementById("content").value = "";
-        
-                            setTimeout(function() {
-        
-                              document.getElementById("status").innerHTML = ""; // Remove success message
-                              window.location.reload();
-        
-                            }, 3000);
-        
-                          } else {
-        
-                            document.getElementById("status").innerHTML = "Error saving data!";
-        
-                          }
-        
-                          document.getElementById("submitBtn").disabled = false;
-        
-                        }
-        
-                      };
-        
-                      xhr.send(formData);
-        
-                    });
-        
-                  </script>
-            </form>
-        </div>
-    </div>
-
-    <div class="quadrant" id="q4">
-        <div class="content">
-            <h2 style="text-align: center; color: #800020;">Wishes</h2>
-            <div id="comment-container" class="comment-container">
-                <!-- Comments will be inserted here dynamically -->
+    <div class="container">
+        <div class="quadrant" id="q1">
+            <div class="content">
+                <div id="quote" class="quote-content"></div>
+                <div class="birthdayCard">
+                  <div class="cardFront">
+                    <div class="front-text">
+                    <h3 class="happy">Happy</h3>
+                    <h2 class="bday">Anniversary</h2> 
+                    <h3 class="toyou">to US!</h3>  
+                    </div>
+                    <div class="wrap-deco">
+                  <div class="decorations"></div>
+                  <div class="decorationsTwo"></div>
+                    </div> 
+                      <div class="wrap-decoTwo">
+                  <div class="decorations"></div>
+                  <div class="decorationsThree"></div>
+                    </div>
+                    <div class="plate">
+                      <div class="cake"></div>
+                      <div class="flame"></div>
+                    </div>
+                  </div>  
+                    <div class="cardInside">
+                       <div class="inside-text">
+                    <h3 class="happy">Happy</h3>
+                    <h2 class="bday">Anniversary</h2> 
+                    <h3 class="toyou">my Munchkin&#10084;</h3>  
+                    </div>
+                      <div class="wishes">
+                      <p>Hi Love,</p>
+                      <p>Happy anniversary to the only person in the world that I want beside me every day and every night for the rest my life. I love you, sweetheart.
+                        Let's celebrate our first mile filled with lots of love and laughter&#128525;&#129392;
+                      </p>
+                      <p class="name">Love,Teja&#128536;</p>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
+        <div class="quadrant" id="q2">
+            <div class="content">
+                <div>
+                    <h2 style="text-align: center; color: #800020;">Our Memories</h2></div>
+                <div class="scroll-container">
+                  <div class="scroll-wrapper">
+                    <fieldset class="bouncy-images">
+                        <label style="--_img: url(https://assets.codepen.io/2585/fiddle-leaf.jpeg)">
+                            <input type="radio" name="images" value="Fiddle Leaf">
+                        </label>
+                        <label style="--_img: url(https://assets.codepen.io/2585/pink-princess.jpeg)">
+                            <input type="radio" name="images" value="Pink Princess">
+                        </label>
+                        <label style="--_img: url(https://assets.codepen.io/2585/kara-eads-zcVArTF8Frs-unsplash.jpg)">
+                            <input type="radio" name="images" value="Monstera" checked>
+                        </label>
+                        <label style="--_img: url(https://assets.codepen.io/2585/pothos.jpeg)">
+                            <input type="radio" name="images" value="Pothos">
+                        </label>
+                        <label style="--_img: url(https://assets.codepen.io/2585/rubber-tree.webp)">
+                            <input type="radio" name="images" value="Rubber Tree">
+                        </label>
+                        <label style="--_img: url(https://assets.codepen.io/2585/pink-princess.jpeg)">
+                            <input type="radio" name="images" value="Placeholder 1">
+                        </label>
+                        <label style="--_img: url(https://assets.codepen.io/2585/pothos.jpeg)">
+                            <input type="radio" name="images" value="Placeholder 2">
+                        </label>
+                        <!-- Add more labels for additional images as needed -->
+                    </fieldset>
+                    <script>
+                      window.addEventListener('DOMContentLoaded', function() {
+                        const scrollContainer = document.querySelector('.scroll-container');
+                        const imagesContainer = document.querySelector('.bouncy-images');
+                        const labels = imagesContainer.querySelectorAll('label');
+
+                        // Clone the labels and append them at the end
+                        labels.forEach(label => {
+                          const clone = label.cloneNode(true);
+                          imagesContainer.appendChild(clone);
+                        });
+
+                        // Set up scrolling animation
+                        let scrollAmount = 0;
+                        const speed = 1; // Adjust scrolling speed
+                        function scrollLoop() {
+                          scrollAmount += speed;
+                          scrollContainer.scrollLeft = scrollAmount;
+                          if (scrollAmount >= imagesContainer.offsetWidth / 2) {
+                            scrollAmount = 0;
+                          }
+                        }
+
+                        setInterval(scrollLoop, 30); // Adjust interval as needed
+                      });
+
+                    </script>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quadrant" id="q3">
+          <div class="content">
+              <h2 style="text-align: center; color: #800020;">Add Wishes</h2>
+              <div id="chatbox" class="chatbox"></div>
+              <form id="postForm">
+                  <div>
+                      <label for="title"><h3 style="text-align: center; color: #800020;" >Name:</h3></label>
+                      <input type="text" id="title" name="title" required>
+                  </div>
+                  <div>
+                      <label for="content" style="text-align: center; color: #800020;"><h3 style="text-align: center; color: #800020;">Message:</h3></label>
+                      <textarea id="content" name="content" required></textarea>
+                  </div>
+                  <button type="submit" id="submitBtn">Submit</button>
+                  <div id="status" style="text-align: center; color: #800020;"></div>
+                  <script>
+  
+                      document.getElementById("postForm").addEventListener("submit", function(event) {
+          
+                        event.preventDefault();
+          
+                        var formData = new FormData(this);
+          
+                        var xhr = new XMLHttpRequest();
+          
+                        xhr.open("POST", "/wish/");
+          
+                        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+          
+                        document.getElementById("submitBtn").disabled = true;
+          
+                        document.getElementById("status").innerHTML = "Submitting...";
+          
+                        xhr.onreadystatechange = function() {
+          
+                          if (xhr.readyState === XMLHttpRequest.DONE) {
+          
+                            if (xhr.status === 200) {
+          
+                              document.getElementById("status").innerHTML = "Wishes saved successfully!";
+  
+                              document.getElementById("title").value = ""; // Clear title field
+          
+                              document.getElementById("content").value = "";
+          
+                              setTimeout(function() {
+          
+                                document.getElementById("status").innerHTML = ""; // Remove success message
+                                window.location.reload();
+          
+                              }, 3000);
+          
+                            } else {
+          
+                              document.getElementById("status").innerHTML = "Error saving data!";
+          
+                            }
+          
+                            document.getElementById("submitBtn").disabled = false;
+                          }
+          
+                        };
+          
+                        xhr.send(formData);
+          
+                      });
+          
+                    </script>
+              </form>
+          </div>
+      </div>
+
+        <div class="quadrant" id="q4">
+            <div class="content">
+                <h2 style="text-align: center; color: #800020;">Wishes</h2>
+                <div id="comment-container" class="comment-container">
+                    <!-- Comments will be inserted here dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" id="svg1" version="1.1" viewBox="0 0 502.98 108.61">
+            <path id="heart" d="M213.35 29.43c19.41-15.19 33.68 10.86 37.73 18.82-.28-13.61 11.64-40.98 25.94-34.01 32.3 15.74-15.88 83.8-26.4 81.76-13.24-9-51.35-53.3-37.27-66.57Z" style="fill:#ff9999;stroke:#ff9999;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+            />
+            <path pathLength="1" id="line" d="M5.32 78.13c.96-.01 5-8.5 5.54-8.54.58-.05 6.1 8.51 7.1 8.51 3.66 0 9.29.06 10.71.05 2.53-.01 4.82-72.88 4.82-72.88l4.76 97.28 3.97-24.45 20.45-.22C64 77.86 77.1 63.66 78.36 63.8c1.31.15 6.68 14.08 7.94 14.07 2.3-.03 33.32.04 35.76.02.96 0 5-8.5 5.53-8.53.59-.05 6.1 8.51 7.1 8.5 3.66 0 9.3.07 10.72.06 2.53-.02 4.81-72.89 4.81-72.89l4.77 97.28 3.97-24.44s83.34-3.33 74.69 7.67c-8.65 11-45.3-42.94-31.65-53.58 25.6-19.96 49.96 36.94 40.26 36.5-12.2-.53 1.8-62.32 23.41-51.7 32.24 15.86-17.56 84.92-26.4 81.77-5.73-2.05-.68-21.68 31.4-26.58 26.65-6.42 29.5 2.35 52.62 7.11 2.53-.02 4.82-72.89 4.82-72.89l4.76 97.28 3.97-24.44 20.45-.22c1.31-.02 14.41-14.22 15.68-14.07 1.32.15 6.7 14.08 7.95 14.07 2.29-.03 33.32.04 35.76.02.95 0 5-8.5 5.53-8.54.58-.04 6.1 8.52 7.1 8.52 3.66 0 9.3.06 10.72.05 2.53-.02 4.81-72.89 4.81-72.89l4.77 97.28 3.97-24.44 20.45-.23c1.31-.01 14.4-14.22 15.68-14.07 1.32.16 6.69 14.09 7.94 14.07"
+            />
+        </svg>
+
     </div>
-    
-    <svg class="svg" xmlns="http://www.w3.org/2000/svg" id="svg1" version="1.1" viewBox="0 0 502.98 108.61">
-        <path id="heart" d="M213.35 29.43c19.41-15.19 33.68 10.86 37.73 18.82-.28-13.61 11.64-40.98 25.94-34.01 32.3 15.74-15.88 83.8-26.4 81.76-13.24-9-51.35-53.3-37.27-66.57Z" style="fill:#ff9999;stroke:#ff9999;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
-        <path  pathLength="1" id="line" d="M5.32 78.13c.96-.01 5-8.5 5.54-8.54.58-.05 6.1 8.51 7.1 8.51 3.66 0 9.29.06 10.71.05 2.53-.01 4.82-72.88 4.82-72.88l4.76 97.28 3.97-24.45 20.45-.22C64 77.86 77.1 63.66 78.36 63.8c1.31.15 6.68 14.08 7.94 14.07 2.3-.03 33.32.04 35.76.02.96 0 5-8.5 5.53-8.53.59-.05 6.1 8.51 7.1 8.5 3.66 0 9.3.07 10.72.06 2.53-.02 4.81-72.89 4.81-72.89l4.77 97.28 3.97-24.44s83.34-3.33 74.69 7.67c-8.65 11-45.3-42.94-31.65-53.58 25.6-19.96 49.96 36.94 40.26 36.5-12.2-.53 1.8-62.32 23.41-51.7 32.24 15.86-17.56 84.92-26.4 81.77-5.73-2.05-.68-21.68 31.4-26.58 26.65-6.42 29.5 2.35 52.62 7.11 2.53-.02 4.82-72.89 4.82-72.89l4.76 97.28 3.97-24.44 20.45-.22c1.31-.02 14.41-14.22 15.68-14.07 1.32.15 6.7 14.08 7.95 14.07 2.29-.03 33.32.04 35.76.02.95 0 5-8.5 5.53-8.54.58-.04 6.1 8.52 7.1 8.52 3.66 0 9.3.06 10.72.05 2.53-.02 4.81-72.89 4.81-72.89l4.77 97.28 3.97-24.44 20.45-.23c1.31-.01 14.4-14.22 15.68-14.07 1.32.16 6.69 14.09 7.94 14.07" />
-    </svg>
-        
-</div>
-<script src="{% static 'css/script.js' %}"></script>
-<!-- <fieldset>
-    <label style="--_img: url(https://assets.codepen.io/2585/fiddle-leaf.jpeg)">
-      <input type="radio" name="images" value="Fiddle Leaf">
-    </label>
-    <label style="--_img: url(https://assets.codepen.io/2585/pink-princess.jpeg)">
-      <input type="radio" name="images" value="Pink Princess">
-    </label>
-    <label style="--_img: url(https://assets.codepen.io/2585/kara-eads-zcVArTF8Frs-unsplash.jpg)">
-      <input type="radio" name="images" value="Monstera" checked>
-    </label>
-    <label style="--_img: url(https://assets.codepen.io/2585/pothos.jpeg)">
-      <input type="radio" name="images" value="Pothos">
-    </label>
-    <label style="--_img: url(https://assets.codepen.io/2585/rubber-tree.webp)">
-      <input type="radio" name="images" value="Rubber Tree">
-    </label>
-  </fieldset> -->
+    <audio autoplay loop>
+      <source src="./Ritha-Dhamava.mp3" type="audio/mpeg">
+    </audio>
+    <script src="{% static 'css/script.js' %}"></script>
 </body>
+
 </html>
 {% endblock %}
