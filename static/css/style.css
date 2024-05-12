@@ -1,0 +1,535 @@
+/* Resetting default browser styles */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    padding: 4px;
+}
+
+.content {
+    height: 100%; /* Ensure content fills the quadrant */
+    display: flex;
+    flex-direction: column;
+}
+
+.quadrant {
+    position: relative;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    overflow: hidden; /* Ensure confetti stays inside quadrant */
+    background-image: url('https://img.freepik.com/free-photo/top-view-beautful-floral-concept-with-copy-space_23-2148599419.jpg?w=2000&t=st=1715458673~exp=1715459273~hmac=20303c85e0143aaf419bd734a220a4a1a7592e26b3add766068104dd220c332c'); 
+
+    /* background-image: url('https://img.freepik.com/free-vector/festive-shimmery-frame-heart-pattern_53876-111742.jpg?w=2000&t=st=1715459032~exp=1715459632~hmac=ffdfc3592e21f0649fd0a5634d13ed963342fffcddd4bdbcb2b982ecb3e397ba'); */
+    background-size: cover;
+    background-position: center; /* Center the background */
+    color: #333; /* Adjust text color */
+    animation: animateBackground 20s linear infinite alternate-reverse;
+}
+
+@keyframes animateBackground {
+    0% {
+        background-position: 0% 0%; /* Start position */
+    }
+    100% {
+        background-position: 100% 100%; /* End position */
+    }
+}
+
+
+.quadrant h2, .quadrant h3, .quadrant h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.chatbox {
+    max-height: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#postForm {
+    margin-top: 5px;
+}
+
+#postForm div, #postForm button {
+    padding: 5px;
+    margin-right: 5px;
+}
+
+#postForm button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#postForm button:hover {
+    background-color: #45a049;
+}
+
+.comment {
+    margin-bottom: 3px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.comment:hover {
+    transform: scale(1.02);
+}
+
+/* Blinking heart */
+svg path#line {
+    fill: none;
+    stroke: #e03c00df;
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    stroke-linejoin: round;
+    stroke-miterlimit: 4;
+    stroke-dasharray: none;
+    stroke-opacity: 1;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: dash 4s linear infinite;
+}
+
+svg path#heart {
+    transform-origin: 50% 50%;
+    animation: blink 4s linear infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 1;
+    }
+    80% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    60% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    75% {
+        opacity: 1;
+        transform: scale(1.0);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    85% {
+        opacity: 1;
+        transform: scale(1.0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.0);
+    }
+}
+
+/* #q5 {
+    grid-column: 1 / -1; 
+    height: 10vh; 
+} */
+
+#svg1 {
+    width: 200%;
+    max-width: 100000px; /* Adjust max-width as needed */
+    height: 75px; /* Adjust height as needed */
+}
+
+.svg-container svg {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.svg-container svg.animate {
+    opacity: 1;
+}
+
+
+/* Add this CSS to ensure that the textarea fits within the quadrant */
+#q3 .content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#q3 form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#q3 form textarea,
+#q3 form input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+
+.comment-container {
+    width: 100%;
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+  }
+
+  .comment-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+  
+  .com {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  
+  .comment-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-right: 20px;
+    background:transparent;
+
+  }
+  
+  .author {
+    color: #007bff;
+  }
+
+  .contents {
+    color: #007bff;
+  }
+  
+  .timestamp {
+    color: #6c757d;
+    margin-left: 10px;
+  }
+  
+  .comment-body {
+    font-size: 16px;
+  }
+  
+
+
+  .scroll-container {
+    width: 210%; /* Adjust width as needed */
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-right: 20px;
+    display: flex; 
+    justify-content:flex-start; 
+    align-items: flex-start;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+
+  .scroll-wrapper {
+    display: flex;
+    align-items: flex-start; /* Align images to the start */
+  }
+  
+  .bouncy-images {
+    display: inline-block;
+    padding: 0px;
+    border: #f9f9f9;
+  }
+  
+  .bouncy-images > label {
+    background-image: var(--_img);
+    background-position: center;
+    background-size: cover; /* Changed to cover to maintain aspect ratio */
+    position: relative;
+    display: inline-block;
+    width: 300px; /* Adjust size as needed */
+    height: 300px; /* Adjust size as needed */
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 1px;
+    animation: scrollImages 20s linear infinite; /* Animation for scrolling */
+  }
+  
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  /* Individual bounce animation for each label */
+  @keyframes scrollImages {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+
+/* card-cont */
+
+.birthdayCard {
+  position: relative;
+  width: 150px;
+  height:250px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+	transform: perspective(2500px);
+  transition: 4s;
+  margin-left: 38%;
+  margin-top: -2%;
+}
+
+.birthdayCard:hover {
+	transform: perspective(2500px) rotate(5deg);
+	box-shadow: inset 100px 20px 100px rgba(0,0,0,.15), 0 10px 100px rgba(0,0,0,0.3);
+}
+
+.birthdayCard:hover .cardFront {
+  transform: rotateY(-160deg); 
+}
+
+.birthdayCard:hover .front-text {
+  display: none;
+}
+
+.birthdayCard:hover .wrap-deco {
+  display: none;
+}
+
+.birthdayCard:hover .wrap-decoTwo {
+  display: none;
+}
+
+.birthdayCard:hover .plate {
+  display: none;
+}
+
+.cardFront {
+  position: relative;
+  background-color: #fff;
+  width: 250px;
+  height:350px;
+  overflow: hidden;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,.13), 30px 0 50px rgba(0,0,0,0.1);
+  transition: .4s;
+}
+
+.happy, .toyou {
+  position: relative;
+  font-family: didot;
+  text-align: center;
+  backface-visibility: hidden;
+  font-size: 30px; 
+}
+
+.happy {
+  top:198px;
+}
+
+.toyou {
+  top:123px;
+}
+
+.bday {
+  position: relative;
+  font-family: arial;
+  font-size: 35px;
+  text-align: center;
+  top:163px;
+}
+
+.wrap-deco {
+  position: absolute;
+  top:-230px;
+  left:-200px;
+}
+
+.decorations {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  border: 3px solid #333;
+  border-radius: 50%;
+}
+
+.decorations:before, .decorations:after, .decorationsTwo:before, .decorationsTwo:after, .decorationsThree:before, .decorationsThree:after {
+  content:"";
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  width:0;
+  height:0;
+}
+
+.decorations:before {
+  border-top: 40px solid #f15bb5;
+  top:297px;
+  left:210px;
+  transform: rotate(-5deg);
+}
+
+.decorations:after{
+  border-top: 40px solid #f4d35e;
+  top:288px;
+  left:260px;
+  transform: rotate(-17deg);
+}
+
+.decorationsTwo:before {
+  border-top: 40px solid #00f5d4;
+  top:268px;
+  left:315px;
+  transform: rotate(-30deg);
+}
+
+.decorationsTwo:after, .decorationsThree:after {
+  border-top: 40px solid #9b5de5;
+  top:238px;
+  left:355px;
+  transform: rotate(-40deg);
+}
+
+.wrap-decoTwo {
+  transform: scaleX(-1);
+  position: absolute;
+  top:-230px;
+  left:445px; 
+}
+
+.decorationsThree:before {
+  border-top: 40px solid #00bbf9;
+  top:268px;
+  left:315px;
+  transform: rotate(-30deg);
+}
+
+.plate {
+  position: absolute;
+  width: 130px;
+  height: 5px;
+  background-color: #00bbf9;
+  left:60px;
+  top:213px;
+}
+
+.cake {
+  position: absolute;
+  overflow: hidden;
+  width:100px;
+  height: 50px;
+  background-color: #f15bb5;
+  border-radius: 10px 10px 0 0;
+  top:-50px;
+  left:15px;
+  box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
+}
+
+.cake:before {
+  content:"";
+  position: absolute;
+  background-color: #432818;
+  width:10px;
+  height:20px;
+  top:5px;
+  border-radius:20px;
+  box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5, 40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
+}
+
+.plate:before {
+  content:"";
+  position: absolute;
+  background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
+  width:7px;
+  height: 25px;
+  top:-75px;
+  left:61px;
+}
+
+.plate:after {
+  content:"";
+  position: absolute;
+  width:1px;
+  height: 5px;
+  background-color: #333;
+  top:-80px;
+  left:64px;
+}
+
+
+.flame {
+  position: absolute;
+  background-color: #fb5607;
+  border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+  transform: rotate(-45deg);
+  width:15px;
+  height:15px;
+  opacity:0.7;
+  top:-93px;
+  left:57px;
+}
+
+.cardInside {
+  position: absolute;
+  background-color: #fff;
+  width: 250px;
+  height:350px;
+  z-index:-1;
+  left:0;
+  top:0;
+  box-shadow: inset 100px 20px 100px rgba(0,0,0,0.2);
+}
+
+.inside-text {
+  position: relative;
+  top:-160px;
+  transform: scale(0.7);
+}
+
+.wishes {
+  position: relative;
+  top:-100px;
+  margin: 25px;
+}
+
+p {
+  font-family: 'Brush Script MT', cursive;
+  color: #333;
+}
+
+.name {
+  margin-left:150px;
+}
+
