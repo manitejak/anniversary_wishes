@@ -1,0 +1,24 @@
+<!-- templates/photos_and_quotes.html -->
+{% extends 'base.html' %}
+
+{% block title %}Anniversary Wishes{% endblock %}
+
+{% block content %}
+<div class="photo-gallery">
+    {% for photo in photos %}
+    <img src="{{ photo.url }}" alt="{{ photo.description }}">
+    {% endfor %}
+</div>
+<div class="quotes-section">
+    {% for quote in quotes %}
+    <blockquote>{{ quote.text }}</blockquote>
+    <footer>- {{ quote.author }}</footer>
+    {% endfor %}
+</div>
+<div class="wish-section">
+    {% for wish in wishes %}
+    <blockquote>{{ wish.title }}</blockquote>
+    <footer>- {{ wish.content }}</footer>
+    {% endfor %}
+</div>
+{% endblock %}
